@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Replay Uploader</title>
+		<link href="style.css" rel="stylesheet">
+	</head>
+	//
+
+	<body>
+		<div class="container">
+			<h1>Replay Uploader</h1>
+
+			<form >
+				<label for="sessionid">ASP.NET_SessionID</label>
+				<input type="text" id="sessionid" placeholder="2gdrienisenreeeeeter" name="sessionid"><br><br>
+				<label for="mxclientauth">mxclientauth</label>
+				<input type="text" placeholder='Arsienrstens/tesnrearl+rsitenierrestniitiernstiIRESNIENiersntiENSrtiENRSTienRSItetiessg==' id="mxclientauth" name="mxclientauth"><br><br>
+			</form>
+
+			<form id="fileUploadForm">
+				<label for="fileInput">Select files to upload:</label>
+				<input type="file" id="fileInput" name="files[]" multiple />
+				<button type="submit" id="uploadButton">Upload Files</button>
+			</form>
+			<div id="userlog"></div>
+		</div>
+
+		<script src="script.js"></script>
+	</body>
+</html>
