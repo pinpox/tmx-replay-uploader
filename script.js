@@ -26,7 +26,6 @@ function uploadReplay(file) {
 	request.addEventListener('readystatechange', () => {
 		if (request.readyState === XMLHttpRequest.DONE) {
 			if (request.status === 200) {
-				// Handle successful response from the server
 				userlog(file.name + ' uploaded successfully!');
 			} else {
 				userlog(file.name + ' failed to upload!');
@@ -57,13 +56,7 @@ function uploadReplay(file) {
 	request.setRequestHeader('Pragma', 'no-cache');
 	request.setRequestHeader('Cache-Control', 'no-cache');
 	request.setRequestHeader('TE', 'trailers');
-
 	request.setRequestHeader('Access-Control-Allow-Origin', '*');
-
-	const part1 = '-----------------------------86198276832215236822279235129\r\nContent-Disposition: form-data; name="replay_file"; filename="';
-
-	const part3 = '"\r\nContent-Type: application/octet-stream\r\n\r\n';
-	const part5 = '\r\n-----------------------------86198276832215236822279235129--\r\n';
 
 	const fr = new FileReader();
 	fr.addEventListener('load', () => {
@@ -71,14 +64,14 @@ function uploadReplay(file) {
 		const s2 = document.querySelector('#mxclientauth').value;
 
 		document.cookie = 'ASP.NET_SessionId='.concat(s1, '; samesite=lax;');
-		document.cookie = '.mxclientauth='.concat(s2, ';samesite=lax');
+		document.cookie = '.mxclientauth='.concat(s2, '; samesite=lax');
 
 		const requestParts = [
-			part1,
+		'-----------------------------86198276832215236822279235129\r\nContent-Disposition: form-data; name="replay_file"; filename="';
 			file.name,
-			part3,
+		'"\r\nContent-Type: application/octet-stream\r\n\r\n';
 			fr.result,
-			part5,
+		'\r\n-----------------------------86198276832215236822279235129--\r\n';
 		];
 
 		postData = ''.concat(...requestParts);
