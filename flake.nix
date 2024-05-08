@@ -63,6 +63,9 @@
                 "tm.0cx.de".extraConfig = ''
                   root * ${pkgs.tm-uploader}
 
+                  file_server
+                  encode zstd gzip
+
                   log {
                     level DEBUG
                   }
@@ -79,7 +82,7 @@
                       defer
                   }
 
-                  reverse_proxy /api/* https://trackmania.exchange:443 {
+                  reverse_proxy https://trackmania.exchange:443 {
                       header_down -Access-Control-Allow-Origin
                       header_down -Access-Control-Allow-Headers
                       header_down -Access-Control-Allow-Credentials
@@ -89,9 +92,6 @@
                   }
 
                   respond @options 204
-
-                  file_server
-                  encode zstd gzip
                 '';
               };
             };
