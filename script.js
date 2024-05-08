@@ -33,30 +33,30 @@ function uploadReplay(file) {
 		}
 	});
 
-	const url = 'https://trackmania.exchange/upload/replay';
-	// Const url='http://localhost:9999'
+	const url = 'https://tm.0cx.de/upload/replay';
+	// const url='http://localhost:9999'
 
 	request.open('POST', url, true);
 	request.withCredentials = true;
 
-	request.setRequestHeader('User-Agent', 'Mozilla/5.0 (X11; Linux x86_64; rv:124.0) Gecko/20100101 Firefox/124.0');
+	// request.setRequestHeader('User-Agent', 'Mozilla/5.0 (X11; Linux x86_64; rv:124.0) Gecko/20100101 Firefox/124.0');
 	request.setRequestHeader('Accept', 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8');
 	request.setRequestHeader('Accept-Language', 'en-US,en;q=0.5');
-	request.setRequestHeader('Accept-Encoding', 'gzip, deflate, br');
+	// request.setRequestHeader('Accept-Encoding', 'gzip, deflate, br');
 	request.setRequestHeader('Content-Type', 'multipart/form-data; boundary=---------------------------86198276832215236822279235129');
-	request.setRequestHeader('Origin', 'https://trackmania.exchange');
-	request.setRequestHeader('DNT', '1');
-	request.setRequestHeader('Connection', 'keep-alive');
-	request.setRequestHeader('Referer', 'https://trackmania.exchange/upload/replay');
+	// request.setRequestHeader('Origin', 'https://trackmania.exchange');
+	// request.setRequestHeader('DNT', '1');
+	// request.setRequestHeader('Connection', 'keep-alive');
+	// request.setRequestHeader('Referer', 'https://trackmania.exchange/upload/replay');
 	// Request.setRequestHeader('Upgrade-Insecure-Requests', '1');
 	// request.setRequestHeader('Sec-Fetch-Dest', 'document');
 	// request.setRequestHeader('Sec-Fetch-Mode', 'navigate');
 	// request.setRequestHeader('Sec-Fetch-Site', 'same-origin');
 	// request.setRequestHeader('Sec-Fetch-User', '?1');
-	request.setRequestHeader('Pragma', 'no-cache');
-	request.setRequestHeader('Cache-Control', 'no-cache');
-	request.setRequestHeader('TE', 'trailers');
-	request.setRequestHeader('Access-Control-Allow-Origin', '*');
+	// request.setRequestHeader('Pragma', 'no-cache');
+	// request.setRequestHeader('Cache-Control', 'no-cache');
+	// request.setRequestHeader('TE', 'trailers');
+	// request.setRequestHeader('Access-Control-Allow-Origin', '*');
 
 	const fr = new FileReader();
 	fr.addEventListener('load', () => {
@@ -67,11 +67,11 @@ function uploadReplay(file) {
 		document.cookie = '.mxclientauth='.concat(s2, '; samesite=lax');
 
 		const requestParts = [
-		'-----------------------------86198276832215236822279235129\r\nContent-Disposition: form-data; name="replay_file"; filename="';
+		'-----------------------------86198276832215236822279235129\r\nContent-Disposition: form-data; name="replay_file"; filename="',
 			file.name,
-		'"\r\nContent-Type: application/octet-stream\r\n\r\n';
+		'"\r\nContent-Type: application/octet-stream\r\n\r\n',
 			fr.result,
-		'\r\n-----------------------------86198276832215236822279235129--\r\n';
+		'\r\n-----------------------------86198276832215236822279235129--\r\n'
 		];
 
 		postData = ''.concat(...requestParts);
